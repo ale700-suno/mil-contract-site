@@ -22,20 +22,29 @@ export const metadata: Metadata = {
   title: "CONTRACT RF",
   description: "Подача анкет и контрактов | Contract RF",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.ico",           // Основная иконка (флаг РФ)
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",       // Для iOS
+    other: {
+      rel: "apple-touch-icon",
+      url: "/apple-icon.png",
+    },
   },
   openGraph: {
     title: "CONTRACT RF",
     description: "Официальный сервис для подачи анкет и контрактов",
     images: [
       {
-        url: "https://milcontract.vercel.app/og-image.jpg", // позже можешь добавить свою картинку
+        url: "https://milcontract.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
+        alt: "CONTRACT RF",
       },
     ],
+    siteName: "CONTRACT RF",
   },
-  keywords: ["contract", "анкета", "контракт", "mil", "rf"],
+  keywords: ["contract", "анкета", "контракт", "mil", "rf", "россия"],
+  authors: [{ name: "CONTRACT RF" }],
 };
 
 export default function RootLayout({
