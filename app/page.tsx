@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as THREE from "three";
-import { FBXLoader } from "three-stdlib";
+import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
 import { ApplicationForm } from "@/components/ApplicationForm";
 
 type FragmentData = {
