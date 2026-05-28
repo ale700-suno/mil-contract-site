@@ -31,4 +31,8 @@ CONTRACT RF — веб-сайт + Telegram-бот для удобной пода
 
 ```bash
 npm install
+<<<<<<< HEAD
 npm run dev
+=======
+npm run dev
+>>>>>>> 12e863c (fix site metadata)

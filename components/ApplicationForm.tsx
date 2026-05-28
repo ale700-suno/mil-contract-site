@@ -10,14 +10,16 @@ type FormSource = "quick" | "contacts";
 type ApplicationFormProps = {
   source: FormSource;
   showComment?: boolean;
+  onOpenPersonalData?: () => void;
 };
 
 const fieldClassName =
-  "w-full px-4 py-4 bg-black/60 border border-white/10 rounded-2xl outline-none focus:border-white/40 transition";
+  "w-full px-4 py-4 bg-black/60 border border-white/10 rounded-2xl outline-none focus:border-white/40 transition select-text";
 
 export function ApplicationForm({
   source,
   showComment = false,
+  onOpenPersonalData,
 }: ApplicationFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -177,6 +179,18 @@ export function ApplicationForm({
           ? "Отправка…"
           : "Отправить заявку"}
       </button>
+
+      <p className="text-xs text-white/45 leading-relaxed text-center">
+        Нажимая кнопку, я даю своё согласие на{" "}
+        <button
+          type="button"
+          onClick={onOpenPersonalData}
+          className="underline decoration-white/25 hover:text-white/70 hover:decoration-white/50 transition"
+        >
+          обработку моих персональных данных
+        </button>
+        .
+      </p>
     </form>
   );
 }

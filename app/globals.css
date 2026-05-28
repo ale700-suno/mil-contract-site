@@ -30,9 +30,26 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Текст на мобильных не обрезается */
+.mil-safe-text {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
