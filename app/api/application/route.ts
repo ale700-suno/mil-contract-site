@@ -2,10 +2,30 @@ export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
 import https from "https";
+import {
+  getClientIp,
+  validateSmartCaptcha,
+} from "@/lib/smart-captcha";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+
+    const captchaOk = await validateSmartCaptcha(
+      body.captchaToken ?? "",
+      getClientIp(req)
+    );
+
+    if (!captchaOk) {
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "Не пройдена проверка «Я не робот». Попробуйте ещё раз.",
+        },
+        { status: 400 }
+      );
+    }
 
     const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
     const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
@@ -23,7 +43,7 @@ export async function POST(req: Request) {
     const text = `
 🚀 НОВАЯ ЗАЯВКА
 
-👤 Имя: ${body.name || "-"}
+👤 ФИО: ${body.name || "-"}
 📞 Телефон: ${body.phone || "-"}
 📲 Telegram: ${body.telegram || "-"}
 🌍 Регион: ${body.region || "-"}
@@ -38,7 +58,7 @@ export async function POST(req: Request) {
 
     const url = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-    const result = await new Promise<any>((resolve, reject) => {
+    const result = await new Promise<unknown>((resolve, reject) => {
       const request = https.request(
         url,
         {
@@ -49,17 +69,17 @@ export async function POST(req: Request) {
           },
         },
         (res) => {
-          let body = "";
+          let responseBody = "";
 
           res.on("data", (chunk) => {
-            body += chunk;
+            responseBody += chunk;
           });
 
           res.on("end", () => {
             try {
-              resolve(JSON.parse(body));
+              resolve(JSON.parse(responseBody));
             } catch {
-              resolve(body);
+              resolve(responseBody);
             }
           });
         }
@@ -75,11 +95,16 @@ export async function POST(req: Request) {
       success: true,
       telegram: result,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Unknown error";
+
     return NextResponse.json(
       {
         success: false,
-        error: error?.message || "Unknown error",
+        error: message,
       },
       { status: 500 }
     );

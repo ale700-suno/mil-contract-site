@@ -117,7 +117,9 @@ export default function Home() {
   // =========================
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
+    const mq = window.matchMedia(
+      "(min-width: 1280px) and (hover: hover) and (pointer: fine)"
+    );
 
     const moveCursor = (e: MouseEvent) => {
       if (!cursorRef.current) return;
@@ -1565,7 +1567,7 @@ loader.load(
 
   return (
     <main
-      className="relative text-white min-h-screen lg:cursor-none select-none"
+      className="relative text-white min-h-screen xl:cursor-none select-none"
       onCopy={(e) => e.preventDefault()}
       onCut={(e) => e.preventDefault()}
     >
@@ -1599,7 +1601,7 @@ loader.load(
 
       <div
         ref={cursorRef}
-        className="fixed z-[9999] pointer-events-none hidden lg:block"
+        className="mil-custom-cursor fixed z-[9999] pointer-events-none hidden xl:block"
         style={{
           transform:
             "translate(-50%, -50%)",
@@ -1622,7 +1624,7 @@ loader.load(
       {/* Мобильное меню открыто — шторка поверх дрона, тачи в меню, не в дрон */}
       {mobileMenu && (
         <div
-          className="fixed inset-0 z-[180] lg:hidden pointer-events-auto bg-black/40"
+          className="fixed inset-0 z-[180] md:hidden pointer-events-auto bg-black/40"
           aria-hidden
           onClick={() => setMobileMenu(false)}
         />
@@ -1641,7 +1643,7 @@ loader.load(
             CONTRACT
           </motion.h1>
 
-          <nav className="hidden lg:flex gap-8 text-white/60">
+          <nav className="hidden md:flex flex-1 min-w-0 justify-center gap-3 lg:gap-6 xl:gap-8 text-white/60 text-xs sm:text-sm overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {[
               "home",
               "conditions",
@@ -1693,7 +1695,7 @@ loader.load(
           </nav>
 
           <div className="flex items-center gap-3 shrink-0">
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2 lg:gap-3">
               <PhoneLink className="text-xs text-white/60" />
               <a
                 href="https://t.me/FmSn5"
@@ -1718,7 +1720,7 @@ loader.load(
                   (open) => !open
                 )
               }
-              className="lg:hidden relative z-[210] min-h-12 min-w-12 flex items-center justify-center text-3xl cursor-pointer touch-manipulation select-none"
+              className="md:hidden relative z-[210] min-h-12 min-w-12 flex items-center justify-center text-3xl cursor-pointer touch-manipulation select-none"
             >
               {mobileMenu ? "✕" : "☰"}
             </button>
@@ -1726,7 +1728,7 @@ loader.load(
         </div>
 
         {mobileMenu && (
-          <nav className="lg:hidden relative z-[210] border-t border-white/10 bg-black/95 backdrop-blur-xl pointer-events-auto">
+          <nav className="md:hidden relative z-[210] border-t border-white/10 bg-black/95 backdrop-blur-xl pointer-events-auto">
             <div className="flex flex-col p-6 gap-2">
               {[
                 ["Главная", "home"],
@@ -2448,7 +2450,7 @@ loader.load(
             <div className="mt-2">
               Оператор может обрабатывать следующие персональные данные Пользователя:
               <ul className="list-disc pl-5 mt-2 space-y-1">
-                <li>Имя</li>
+                <li>ФИО</li>
                 <li>Номер телефона</li>
                 <li>Telegram username</li>
                 <li>Регион проживания</li>
@@ -2522,9 +2524,15 @@ loader.load(
           <div>
             <div className="font-semibold text-white">8. Отзыв согласия</div>
             <div className="mt-2">
-              Пользователь может в любой момент отозвать согласие на обработку персональных данных, направив обращение Оператору через Telegram или по электронной почте.
-              <div className="mt-2">Telegram: https://t.me/FmSn5</div>
-              <div>Email: yourmail@example.com</div>
+              Пользователь может в любой момент отозвать согласие на обработку персональных данных, направив обращение Оператору в Telegram:{" "}
+              <a
+                href="https://t.me/FmSn5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white underline decoration-white/30 hover:decoration-white/70"
+              >
+                https://t.me/FmSn5
+              </a>
             </div>
           </div>
 

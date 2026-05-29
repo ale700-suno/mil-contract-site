@@ -4,6 +4,7 @@ import {
   useState,
   type FormEvent,
 } from "react";
+import { SmartCaptcha } from "@yandex/smart-captcha";
 
 type FormSource = "quick" | "contacts";
 
@@ -12,6 +13,9 @@ type ApplicationFormProps = {
   showComment?: boolean;
   onOpenPersonalData?: () => void;
 };
+
+const CAPTCHA_SITEKEY =
+  "ysc1_jWMewBhiM2r5bVva7OJHeCo2WrPefaZsigAM2Eoje3a08ea2";
 
 const fieldClassName =
   "w-full px-4 py-4 bg-black/60 border border-white/10 rounded-2xl outline-none focus:border-white/40 transition select-text";
@@ -26,16 +30,33 @@ export function ApplicationForm({
   const [telegram, setTelegram] = useState("");
   const [region, setRegion] = useState("");
   const [comment, setComment] = useState("");
+  const [captchaToken, setCaptchaToken] =
+    useState("");
+  const [captchaKey, setCaptchaKey] = useState(0);
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] =
     useState("");
 
+  const resetCaptcha = () => {
+    setCaptchaToken("");
+    setCaptchaKey((key) => key + 1);
+  };
+
   const handleSubmit = async (
     event: FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
+
+    if (!captchaToken) {
+      setStatus("error");
+      setErrorMessage(
+        "Подтвердите, что вы не робот"
+      );
+      return;
+    }
+
     setStatus("loading");
     setErrorMessage("");
 
@@ -57,6 +78,7 @@ export function ApplicationForm({
               ? comment
               : undefined,
             source,
+            captchaToken,
           }),
         }
       );
@@ -73,6 +95,7 @@ export function ApplicationForm({
           data.error ??
             "Не удалось отправить заявку"
         );
+        resetCaptcha();
         return;
       }
 
@@ -82,11 +105,13 @@ export function ApplicationForm({
       setTelegram("");
       setRegion("");
       setComment("");
+      resetCaptcha();
     } catch {
       setStatus("error");
       setErrorMessage(
         "Нет соединения с сервером"
       );
+      resetCaptcha();
     }
   };
 
@@ -104,7 +129,7 @@ export function ApplicationForm({
         onChange={(e) =>
           setName(e.target.value)
         }
-        placeholder="Имя"
+        placeholder="ФИО"
         className={fieldClassName}
         disabled={isLoading}
       />
@@ -172,13 +197,27 @@ export function ApplicationForm({
 
       <button
         type="submit"
-        disabled={isLoading}
+        disabled={isLoading || !captchaToken}
         className="w-full py-4 bg-white text-black rounded-2xl font-bold hover:scale-[1.02] transition disabled:opacity-60 disabled:hover:scale-100"
       >
         {isLoading
           ? "Отправка…"
           : "Отправить заявку"}
       </button>
+
+      <div
+        key={captchaKey}
+        className="flex justify-center min-h-[100px]"
+      >
+        <SmartCaptcha
+          sitekey={CAPTCHA_SITEKEY}
+          theme="dark"
+          onSuccess={setCaptchaToken}
+          onTokenExpired={() =>
+            setCaptchaToken("")
+          }
+        />
+      </div>
 
       <p className="text-xs text-white/45 leading-relaxed text-center">
         Нажимая кнопку, я даю своё согласие на{" "}

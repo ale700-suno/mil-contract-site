@@ -53,3 +53,10 @@ a {
   word-break: break-word;
   hyphens: auto;
 }
+
+/* iPad, Nest Hub и другие тач-устройства — без кастомного курсора */
+@media (hover: none), (pointer: coarse) {
+  .mil-custom-cursor {
+    display: none !important;
+  }
+}

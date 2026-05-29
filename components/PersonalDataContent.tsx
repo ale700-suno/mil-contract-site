@@ -3,12 +3,12 @@ export function PersonalDataContent() {
     <div className="space-y-4">
       <div>
         При отправке заявки Пользователь предоставляет персональные данные (например,
-        имя и телефон) для связи и консультации по вопросам оформления.
+        ФИО и телефон) для связи и консультации по вопросам оформления.
       </div>
       <div>
         <div className="font-semibold text-white">Какие данные обрабатываются</div>
         <ul className="list-disc pl-5 mt-2 space-y-1">
-          <li>Имя</li>
+          <li>ФИО</li>
           <li>Телефон</li>
           <li>Telegram username (при наличии)</li>
           <li>Регион проживания</li>
