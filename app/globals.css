@@ -60,3 +60,142 @@ a {
     display: none !important;
   }
 }
+
+/* Триколор — заголовок */
+.text-gradient-tricolor {
+  background: linear-gradient(
+    105deg,
+    #ffffff 0%,
+    #ffffff 32%,
+    #0039a6 38%,
+    #0039a6 62%,
+    #d52b1e 68%,
+    #d52b1e 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.12));
+}
+
+/* Золотые суммы */
+.gold-money {
+  font-weight: 800;
+  color: #e8c547;
+  text-shadow: 0 0 18px rgba(232, 197, 71, 0.35);
+}
+
+.gold-money-shimmer {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    110deg,
+    #c9a227 0%,
+    #f5e6a8 22%,
+    #fff8dc 38%,
+    #d4af37 52%,
+    #f5e6a8 68%,
+    #b8860b 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-money-shine 2.8s ease-in-out infinite;
+}
+
+@keyframes gold-money-shine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Георгиевская лента */
+.ribbon-corner {
+  position: absolute;
+  width: clamp(72px, 14vw, 120px);
+  height: auto;
+  opacity: 0.92;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+}
+
+.ribbon-corner--tl {
+  top: 0;
+  left: 0;
+}
+
+.ribbon-corner--br {
+  bottom: 0;
+  right: 0;
+  transform: scaleX(-1) scaleY(-1);
+}
+
+.ribbon-underline {
+  display: inline-block;
+  padding-bottom: 0.35rem;
+  background-image: url("/textures/lenta.png");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 10px;
+}
+
+/* Бегущая строка */
+.patriotic-ticker {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 57, 166, 0.15),
+    rgba(0, 0, 0, 0.4),
+    rgba(213, 43, 30, 0.12)
+  );
+}
+
+.patriotic-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: patriotic-marquee 28s linear infinite;
+}
+
+.patriotic-ticker__item {
+  flex-shrink: 0;
+  padding: 0.65rem 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .patriotic-ticker__track {
+    animation: none;
+  }
+  .gold-money-shimmer {
+    animation: none;
+    color: #e8c547;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+}
+
+@keyframes patriotic-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.glass-card {
+  position: relative;
+}

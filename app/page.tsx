@@ -1597,6 +1597,15 @@ loader.load(
 
       <div className="fixed inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
 
+      <div
+        className="fixed inset-0 z-[1] pointer-events-none opacity-[0.07]"
+        style={{
+          background:
+            "linear-gradient(135deg, #0039a6 0%, transparent 40%, transparent 60%, #d52b1e 100%)",
+        }}
+        aria-hidden
+      />
+
       {/* CUSTOM CURSOR */}
 
       <div
@@ -1774,34 +1783,68 @@ loader.load(
               x: 0,
             }}
           >
-            <div className="mb-4 text-sm tracking-[6px] text-white/40">
-              CONTRACT CENTER
+            <div className="mb-4 text-sm tracking-[6px] text-white/50 font-semibold">
+              СЛУЖУ РОССИИ · CONTRACT RF
             </div>
 
-           <h1 className="text-3xl leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 break-words">
-  Контрактная
-  <br />
+            <h1 className="relative text-3xl leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 break-words">
+              <img
+                src="/textures/lenta.png"
+                alt=""
+                aria-hidden
+                className="ribbon-corner ribbon-corner--tl"
+                draggable={false}
+              />
+              <span className="text-gradient-tricolor">
+                Контрактная
+                <br />
+                <span className="inline-flex items-center gap-3 sm:gap-4 flex-wrap">
+                  служба РФ
+                  <img
+                    src="/textures/russia-flag.png"
+                    alt="Флаг РФ"
+                    className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-lg"
+                    draggable={false}
+                  />
+                </span>
+              </span>
+            </h1>
 
-  <span className="inline-flex items-center gap-4">
-    служба РФ
+            <div className="patriotic-ticker mb-6 -mx-1 sm:mx-0 rounded-lg overflow-hidden pointer-events-none">
+              <div className="patriotic-ticker__track">
+                {Array.from({ length: 2 }).map((_, i) => (
+                  <span key={i} className="patriotic-ticker__item">
+                    ★ 18–60 лет • Контракт от 6 месяцев • Выплаты до{" "}
+                    <span className="gold-money">3 000 000 ₽</span> ★
+                  </span>
+                ))}
+              </div>
+            </div>
 
-    <img
-      src="/textures/russia-flag.png"
-      alt="Флаг РФ"
-      className="w-14 h-14 object-contain"
-      draggable={false}
-    />
-  </span>
-</h1>
-
-            <p className="text-white/50 mb-8 leading-relaxed text-base sm:text-lg max-w-xl break-words">
-              Консультации,
-              оформление,
-              сопровождение
-              кандидатов, выплаты,
-              должности и помощь на
-              всех этапах.
+            <p className="text-white/70 mb-5 leading-relaxed text-base sm:text-lg max-w-xl break-words font-medium">
+              Полное сопровождение от подачи заявления до первых выплат.
+              Служи с честью.
             </p>
+
+            <div className="mb-8 flex flex-wrap gap-2 sm:gap-3 max-w-xl">
+              {[
+                "Служи Отечеству с честью",
+                "Стань частью великой истории России",
+                "Защита Родины — высшая честь",
+                "Традиции мужества и героизма",
+                "Служу России!",
+                "Защитим Родину вместе",
+                "Честь. Долг. Отечество.",
+                "Стань щитом Отечества",
+              ].map((slogan) => (
+                <span
+                  key={slogan}
+                  className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-white/80 tracking-wide"
+                >
+                  {slogan}
+                </span>
+              ))}
+            </div>
 
             <div
               className="flex gap-4 flex-wrap pointer-events-auto"
@@ -1911,7 +1954,7 @@ loader.load(
       >
         <div className="max-w-6xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">
+            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">
               Условия службы
             </h2>
           </Reveal>
@@ -1925,7 +1968,7 @@ loader.load(
 
               [
                 "Контракт",
-                "Контракт подписывается минимум на полгода.",
+                "Контракт от 6 месяцев — служба с честью и достойным вознаграждением.",
               ],
 
               [
@@ -1971,12 +2014,20 @@ loader.load(
       <section id="payments" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
         <div className="max-w-7xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">Выплаты</h2>
+            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-3 break-words">
+              Выплаты
+            </h2>
+            <p className="text-white/60 text-lg mb-8 sm:mb-10 max-w-3xl">
+              Достойное вознаграждение защитникам Отечества
+            </p>
           </Reveal>
           <Stagger className="grid md:grid-cols-2 gap-6">
             {[
               ["Москва", "3 000 000 ₽"],
               ["Балашиха", "3 000 000 ₽"],
+              ["Тула", "3 100 000 ₽"],
+              ["Чукотка", "3 000 000 ₽"],
+              ["Владимир", "2 600 000 ₽ + 10 соток земли"],
               ["Тверь", "2 400 000 ₽"],
               ["Воронеж", "2 500 000 ₽"],
               ["Иваново", "1 400 000 ₽ + участок"],
@@ -2001,7 +2052,12 @@ loader.load(
       <section id="jobs" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
         <div className="max-w-7xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">Должности</h2>
+            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-3 break-words">
+              Должности
+            </h2>
+            <p className="text-white/60 text-lg mb-8 sm:mb-10 max-w-3xl">
+              Боевые специальности
+            </p>
           </Reveal>
           <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -2011,7 +2067,13 @@ loader.load(
               ["Старший сапер", "216 000 ₽"],
               ["Старший телефонист", "224 000 ₽"],
               ["Командир отделения", "238 000 ₽"],
-              ["Заместитель командира взвода", "250 000 ₽"],
+              ["Водитель", "215 000 ₽"],
+              ["Артиллерия", "220 000 ₽"],
+              ["БПЛА", "225 000 ₽"],
+              ["Ремонтный батальон", "218 000 ₽"],
+              ["Связь", "224 000 ₽"],
+              ["РСЗО (реактивные системы залпового огня)", "222 000 ₽"],
+              ["РЭБ (радиоэлектронная борьба)", "228 000 ₽"],
             ].map(([job, salary]) => (
               <Reveal key={job} className={glass + " p-6"}>
                 <h3 className="text-xl font-bold mb-3">{job}</h3>
@@ -2028,14 +2090,29 @@ loader.load(
       <section id="regions" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
         <div className="max-w-6xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">Регионы</h2>
+            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-3 break-words">
+              Регионы
+            </h2>
+            <p className="text-white/60 text-lg mb-8 sm:mb-10 max-w-3xl">
+              Направления службы
+            </p>
           </Reveal>
 
-          <Reveal className={glass + " p-4 sm:p-6 md:p-8"}>
+          <Reveal className={glass + " p-4 sm:p-6 md:p-8 relative"}>
+            <img
+              src="/textures/lenta.png"
+              alt=""
+              aria-hidden
+              className="ribbon-corner ribbon-corner--br"
+              draggable={false}
+            />
             <Stagger className="space-y-3">
               {[
                 ["Москва", "от 270 000 ₽", 100],
+                ["Чукотка", "от 250 000 ₽", 96],
+                ["Владимир", "от 220 000 ₽", 92],
                 ["Балашиха", "210 000 ₽", 86],
+                ["Тула", "от 210 000 ₽", 84],
                 ["Африка", "230 000 ₽", 82],
                 ["Воронеж", "210 000 ₽", 78],
                 ["Тверь", "210 000 ₽", 74],
@@ -2094,7 +2171,6 @@ loader.load(
                 ["Паспорт", "/textures/passport.png", "xl"],
                 ["Военный билет", "/textures/military-id.png", "large"],
                 ["СНИЛС", "/textures/snils.png", "medium"],
-                ["Реквизиты карты", "/textures/card.png", "smallMed"],
                 ["ИНН", "/textures/inn.png", "xsmall"],
               ] as const
             ).map(([title, img, size]) => (
@@ -2234,8 +2310,12 @@ loader.load(
             />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 break-words">Связаться</h2>
-          <p className="text-white/50 mb-8 text-sm sm:text-base break-words px-1">Telegram для консультации и подачи анкеты</p>
+          <h2 className="ribbon-underline text-3xl sm:text-4xl md:text-5xl font-black mb-6 break-words inline-block">
+            Связаться
+          </h2>
+          <p className="text-white/60 mb-8 text-sm sm:text-base break-words px-1">
+            Защитим Родину вместе. Telegram для консультации и подачи анкеты.
+          </p>
           <div className="flex flex-col items-center gap-4 pointer-events-auto">
             <PhoneLink
               className="text-white/70 text-lg touch-manipulation"
@@ -2258,7 +2338,7 @@ loader.load(
       <footer className="relative px-4 sm:px-6 pt-12 pb-14 border-t border-white/10 pointer-events-auto mil-divider">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-4 lg:gap-6 items-start lg:items-center justify-between text-white/60">
           <div className="text-sm">
-            © {new Date().getFullYear()} CONTRACT RF
+            © {new Date().getFullYear()} CONTRACT RF · Честь. Долг. Отечество.
           </div>
           <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 min-w-0 w-full sm:w-auto">
             <button

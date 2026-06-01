@@ -25,7 +25,7 @@ type AnimatedMoneyProps = {
 
 export function AnimatedMoney({
   text,
-  className,
+  className = "",
   duration = 1.9,
   startWhenVisible = true,
 }: AnimatedMoneyProps) {
@@ -36,6 +36,7 @@ export function AnimatedMoney({
 
   const ref = useRef<HTMLSpanElement | null>(null);
   const [inView, setInView] = useState(!startWhenVisible);
+  const [countDone, setCountDone] = useState(false);
 
   const mv = useMotionValue(0);
   const formatted = useTransform(mv, (v) => formatRuble(v));
@@ -58,33 +59,43 @@ export function AnimatedMoney({
 
   useEffect(() => {
     if (!inView || value == null) {
-      if (!inView) mv.set(0);
+      if (!inView) {
+        mv.set(0);
+        setCountDone(false);
+      }
       return;
     }
 
     mv.set(0);
+    setCountDone(false);
 
     const controls = animate(mv, value, {
       duration,
       ease: [0.16, 1, 0.3, 1],
+      onComplete: () => setCountDone(true),
     });
 
     return () => controls.stop();
   }, [duration, inView, mv, value]);
 
   if (value == null) {
-    return <span className={className}>{text}</span>;
+    return <span className={`gold-money ${className}`}>{text}</span>;
   }
 
   const showAnimated = inView || !startWhenVisible;
+  const amountClass = countDone
+    ? "gold-money-shimmer"
+    : "gold-money";
 
   return (
     <span ref={ref} className={className}>
-      {prefix ? <span className="text-white/60">{prefix} </span> : null}
-      <motion.span>
+      {prefix ? <span className="text-white/60 font-medium">{prefix} </span> : null}
+      <motion.span className={amountClass}>
         {showAnimated ? formatted : formatRuble(0)}
       </motion.span>
-      {suffix ? <span className="text-white/60"> {suffix}</span> : null}
+      {suffix ? (
+        <span className="text-white/70 font-semibold"> {suffix}</span>
+      ) : null}
     </span>
   );
 }
