@@ -14,6 +14,7 @@ import { PhoneLink } from "@/components/PhoneLink";
 import { Modal } from "@/components/Modal";
 import { PersonalDataContent } from "@/components/PersonalDataContent";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SectionBackground } from "@/components/SectionBackground";
 
 type FragmentData = {
   mesh: THREE.Mesh;
@@ -1770,9 +1771,10 @@ loader.load(
 
       <section
         id="home"
-        className="relative scroll-mt-24 pt-20 sm:pt-28 md:pt-32 px-4 sm:px-6 pb-12 sm:pb-20 md:pb-24 pointer-events-none"
+        className="relative overflow-hidden scroll-mt-24 pt-20 sm:pt-28 md:pt-32 px-4 sm:px-6 pb-12 sm:pb-20 md:pb-24 pointer-events-none min-h-[min(100dvh,920px)] sm:min-h-0"
       >
-        <div className="max-w-7xl mx-auto min-w-0 flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+        <SectionBackground src="/textures/hero.png" variant="hero" />
+        <div className="relative z-10 max-w-7xl mx-auto min-w-0 flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
           {/* На телефоне форма первой — сразу видна */}
           <motion.div
             initial={{
@@ -1789,7 +1791,7 @@ loader.load(
             id="quick-form"
             className={
               glass +
-              " order-1 lg:order-2 w-full relative z-20 pointer-events-auto touch-manipulation bg-black/70 sm:bg-black/50 lg:bg-white/5 scroll-mt-28"
+              " order-1 lg:order-2 w-full relative z-20 pointer-events-auto touch-manipulation bg-black/80 sm:bg-black/65 lg:bg-black/45 backdrop-blur-md scroll-mt-28"
             }
             data-ui-interactive
           >
@@ -1921,9 +1923,10 @@ loader.load(
 
       <section
         id="conditions"
-        className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider"
+        className="relative overflow-hidden scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider"
       >
-        <div className="max-w-6xl mx-auto min-w-0">
+        <SectionBackground src="/textures/conditions.png" variant="conditions" />
+        <div className="relative z-10 max-w-6xl mx-auto min-w-0">
           <Reveal>
             <SectionHeading title="Условия службы" />
           </Reveal>
@@ -2019,8 +2022,9 @@ loader.load(
       </section>
 
       {/* JOBS */}
-      <section id="jobs" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
-        <div className="max-w-7xl mx-auto min-w-0">
+      <section id="jobs" className="relative overflow-hidden scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
+        <SectionBackground src="/textures/positions.png" variant="positions" />
+        <div className="relative z-10 max-w-7xl mx-auto min-w-0">
           <Reveal>
             <SectionHeading title="Должности" />
           </Reveal>

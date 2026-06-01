@@ -126,11 +126,18 @@ a {
 
 .section-title-with-ribbon__ribbon {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: -0.42em;
+  bottom: 0.2em;
   z-index: 0;
   line-height: 0;
   pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .section-title-with-ribbon__ribbon {
+    left: -0.32em;
+    bottom: 0.14em;
+  }
 }
 
 .section-title-with-ribbon__img {
@@ -211,4 +218,110 @@ a {
 
 .glass-card {
   position: relative;
+}
+
+/* Фоновые PNG секций — нижний слой внутри блока */
+.mil-section-bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.mil-section-bg--hero {
+  background-position: 72% 42%;
+  background-size: cover;
+}
+
+.mil-section-bg--conditions {
+  background-position: center 38%;
+  background-size: cover;
+}
+
+.mil-section-bg--positions {
+  background-position: 58% 40%;
+  background-size: cover;
+}
+
+.mil-section-bg-overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.62) 42%,
+    rgba(0, 0, 0, 0.48) 100%
+  );
+}
+
+.mil-section-bg-overlay--hero {
+  background: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.78) 38%,
+    rgba(0, 0, 0, 0.35) 62%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+.mil-section-bg-overlay--conditions {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.88) 100%
+  );
+}
+
+.mil-section-bg-overlay--positions {
+  background: linear-gradient(
+    115deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+@media (max-width: 639px) {
+  .mil-section-bg--hero {
+    background-position: 78% 28%;
+    background-size: auto 115%;
+  }
+
+  .mil-section-bg--conditions {
+    background-position: 62% 22%;
+    background-size: auto 120%;
+  }
+
+  .mil-section-bg--positions {
+    background-position: 70% 30%;
+    background-size: auto 118%;
+  }
+
+  .mil-section-bg-overlay--hero {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.75) 35%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .mil-section-bg--hero {
+    background-position: 68% 36%;
+    background-size: cover;
+  }
+
+  .mil-section-bg--conditions {
+    background-position: center 32%;
+  }
+
+  .mil-section-bg--positions {
+    background-position: 55% 36%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mil-section-bg--hero {
+    background-position: 70% 40%;
+  }
 }
