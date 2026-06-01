@@ -1770,11 +1770,43 @@ loader.load(
 
       <section
         id="home"
-        className="relative scroll-mt-24 pt-24 sm:pt-32 px-4 sm:px-6 pb-20 sm:pb-24 pointer-events-none"
+        className="relative scroll-mt-24 pt-20 sm:pt-28 md:pt-32 px-4 sm:px-6 pb-12 sm:pb-20 md:pb-24 pointer-events-none"
       >
-        <div className="max-w-7xl mx-auto min-w-0 grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+        <div className="max-w-7xl mx-auto min-w-0 flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-start">
+          {/* На телефоне форма первой — сразу видна */}
           <motion.div
-            className="pointer-events-none"
+            initial={{
+              opacity: 0,
+              y: 40,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              delay: 0.05,
+            }}
+            id="quick-form"
+            className={
+              glass +
+              " order-1 lg:order-2 w-full relative z-20 pointer-events-auto touch-manipulation bg-black/70 sm:bg-black/50 lg:bg-white/5 scroll-mt-28"
+            }
+            data-ui-interactive
+          >
+            <div className="p-5 sm:p-6 md:p-8 relative z-10">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
+                Быстрая заявка
+              </h3>
+
+              <ApplicationForm
+                source="quick"
+                onOpenPersonalData={() => setOpenPdn(true)}
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="pointer-events-none order-2 lg:order-1 w-full relative z-10"
             initial={{
               opacity: 0,
               x: -60,
@@ -1784,29 +1816,17 @@ loader.load(
               x: 0,
             }}
           >
-            <h1 className="relative text-3xl leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 break-words">
-              <span className="ribbon-first-letter ribbon-first-letter--hero">
-                <span className="text-gradient-tricolor ribbon-first-letter__char">
-                  К
-                </span>
-                <span className="ribbon-first-letter__ribbon" aria-hidden>
-                  <img
-                    src="/textures/lenta.png"
-                    alt=""
-                    className="ribbon-first-letter__img"
-                    draggable={false}
-                  />
-                </span>
-              </span>
+            <h1 className="relative text-[1.65rem] leading-[1.08] min-[400px]:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 sm:mb-4 break-words">
+              <span className="text-white">К</span>
               <span className="text-gradient-tricolor">
                 онтрактная
                 <br />
-                <span className="inline-flex items-center gap-3 sm:gap-4 flex-wrap">
+                <span className="inline-flex items-center gap-2 sm:gap-4 flex-wrap">
                   служба РФ
                   <img
                     src="/textures/russia-flag.png"
                     alt="Флаг РФ"
-                    className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-lg"
+                    className="w-10 h-10 sm:w-14 sm:h-14 object-contain drop-shadow-lg"
                     draggable={false}
                   />
                 </span>
@@ -1872,7 +1892,7 @@ loader.load(
 
             {/* STATS */}
 
-            <Reveal className={glass + " p-5 mt-12 max-w-xs"}>
+            <Reveal className={glass + " p-5 mt-8 sm:mt-12 max-w-xs"}>
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <div className="text-3xl font-black">
@@ -1893,38 +1913,6 @@ loader.load(
                 </button>
               </div>
             </Reveal>
-          </motion.div>
-
-          {/* QUICK FORM */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 50,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              delay: 0.2,
-            }}
-            className={
-              glass +
-              " pointer-events-auto touch-manipulation"
-            }
-            data-ui-interactive
-          >
-            <div className="p-8 relative z-10">
-              <h3 className="text-2xl font-bold mb-6">
-                Быстрая заявка
-              </h3>
-
-              <ApplicationForm
-                source="quick"
-                onOpenPersonalData={() => setOpenPdn(true)}
-              />
-            </div>
           </motion.div>
         </div>
       </section>
@@ -2079,16 +2067,16 @@ loader.load(
                 ["Москва", "от 270 000 ₽", 100],
                 ["Чукотка", "от 250 000 ₽", 96],
                 ["Владимир", "от 220 000 ₽", 92],
-                ["Балашиха", "210 000 ₽", 86],
+                ["Балашиха", "от 210 000 ₽", 86],
                 ["Тула", "от 210 000 ₽", 84],
-                ["Африка", "230 000 ₽", 82],
-                ["Воронеж", "210 000 ₽", 78],
-                ["Тверь", "210 000 ₽", 74],
-                ["Саратов", "210 000 ₽", 72],
-                ["Чебоксары", "210 000 ₽", 70],
-                ["Нижнекамск", "210 000 ₽", 68],
-                ["Нижний Новгород", "204 000 ₽", 63],
-                ["Иваново", "204 000 ₽", 60],
+                ["Африка", "от 230 000 ₽", 82],
+                ["Воронеж", "от 210 000 ₽", 78],
+                ["Тверь", "от 210 000 ₽", 74],
+                ["Саратов", "от 210 000 ₽", 72],
+                ["Чебоксары", "от 210 000 ₽", 70],
+                ["Нижнекамск", "от 210 000 ₽", 68],
+                ["Нижний Новгород", "от 204 000 ₽", 63],
+                ["Иваново", "от 204 000 ₽", 60],
               ].map(([city, price, score], idx) => (
                 <Reveal
                   key={city}
@@ -2284,7 +2272,7 @@ loader.load(
           </div>
 
           <div className="mb-6 flex justify-center text-center">
-            <SectionHeading title="Связаться" className="[&_.ribbon-first-letter]:mx-auto" />
+            <SectionHeading title="Связаться" className="[&_.section-title-with-ribbon]:mx-auto [&_.section-title-with-ribbon__text]:text-center" />
           </div>
           <p className="text-white/60 mb-8 text-sm sm:text-base break-words px-1">
             Telegram для консультации и подачи анкеты

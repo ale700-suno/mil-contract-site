@@ -115,54 +115,46 @@ a {
   }
 }
 
-/* Георгиевская лента — строго под первой буквой, не перекрывает текст */
-.ribbon-first-letter {
+/* Георгиевская лента — слева в начале заголовка, слой под текстом */
+.section-title-with-ribbon {
   position: relative;
   display: inline-block;
-  vertical-align: baseline;
-  margin-right: 0.06em;
-  padding-bottom: 0.72em;
-  line-height: 1;
+  max-width: 100%;
+  padding-bottom: 0.5em;
+  isolation: isolate;
 }
 
-.ribbon-first-letter__char {
-  position: relative;
-  z-index: 2;
-  display: inline-block;
-  line-height: inherit;
-}
-
-.ribbon-first-letter__ribbon {
+.section-title-with-ribbon__ribbon {
   position: absolute;
-  left: 50%;
+  left: 0;
   bottom: 0;
-  transform: translateX(-50%);
-  z-index: 1;
-  display: flex;
-  justify-content: center;
+  z-index: 0;
   line-height: 0;
   pointer-events: none;
 }
 
-.ribbon-first-letter__img {
+.section-title-with-ribbon__img {
   display: block;
-  width: 2.5em;
-  min-width: 56px;
-  max-width: 88px;
+  width: clamp(52px, 2.4em, 96px);
   height: auto;
-  opacity: 0.98;
+  opacity: 0.95;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
 
-/* Крупнее в главном заголовке */
-.ribbon-first-letter--hero {
-  padding-bottom: 0.9em;
+.section-title-with-ribbon__text {
+  position: relative;
+  z-index: 1;
+  display: inline;
 }
 
-.ribbon-first-letter--hero .ribbon-first-letter__img {
-  width: 3em;
-  min-width: 68px;
-  max-width: 112px;
+@media (max-width: 639px) {
+  .section-title-with-ribbon {
+    padding-bottom: 0.42em;
+  }
+
+  .section-title-with-ribbon__img {
+    width: clamp(44px, 2em, 72px);
+  }
 }
 
 /* Бегущая строка */
