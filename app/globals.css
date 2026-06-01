@@ -115,30 +115,54 @@ a {
   }
 }
 
-/* Георгиевская лента — под первой буквой заголовка */
+/* Георгиевская лента — строго под первой буквой, не перекрывает текст */
 .ribbon-first-letter {
   position: relative;
   display: inline-block;
-  margin-right: 0.02em;
+  vertical-align: baseline;
+  margin-right: 0.06em;
+  padding-bottom: 0.72em;
+  line-height: 1;
 }
 
 .ribbon-first-letter__char {
   position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: inherit;
+}
+
+.ribbon-first-letter__ribbon {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+  pointer-events: none;
 }
 
 .ribbon-first-letter__img {
-  position: absolute;
-  left: 50%;
-  bottom: -0.22em;
-  transform: translateX(-50%);
-  width: 1.55em;
-  max-width: 52px;
+  display: block;
+  width: 2.5em;
+  min-width: 56px;
+  max-width: 88px;
   height: auto;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.95;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+  opacity: 0.98;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
+}
+
+/* Крупнее в главном заголовке */
+.ribbon-first-letter--hero {
+  padding-bottom: 0.9em;
+}
+
+.ribbon-first-letter--hero .ribbon-first-letter__img {
+  width: 3em;
+  min-width: 68px;
+  max-width: 112px;
 }
 
 /* Бегущая строка */

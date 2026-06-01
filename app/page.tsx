@@ -1785,9 +1785,11 @@ loader.load(
             }}
           >
             <h1 className="relative text-3xl leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 break-words">
-              <span className="text-gradient-tricolor">
-                <span className="ribbon-first-letter">
-                  <span className="ribbon-first-letter__char">К</span>
+              <span className="ribbon-first-letter ribbon-first-letter--hero">
+                <span className="text-gradient-tricolor ribbon-first-letter__char">
+                  К
+                </span>
+                <span className="ribbon-first-letter__ribbon" aria-hidden>
                   <img
                     src="/textures/lenta.png"
                     alt=""
@@ -1795,6 +1797,8 @@ loader.load(
                     draggable={false}
                   />
                 </span>
+              </span>
+              <span className="text-gradient-tricolor">
                 онтрактная
                 <br />
                 <span className="inline-flex items-center gap-3 sm:gap-4 flex-wrap">
@@ -1923,9 +1927,6 @@ loader.load(
             </div>
           </motion.div>
         </div>
-        <p className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide pointer-events-none">
-          Служи Отечеству с честью
-        </p>
       </section>
 
       {/* CONDITIONS */}
