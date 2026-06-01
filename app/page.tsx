@@ -1837,7 +1837,7 @@ loader.load(
               <div className="patriotic-ticker__track">
                 {Array.from({ length: 2 }).map((_, i) => (
                   <span key={i} className="patriotic-ticker__item">
-                    ★ 18–60 лет • Контракт от 6 месяцев • Выплаты до{" "}
+                    ★ 18–63 лет • Контракт от 6 месяцев • Выплаты до{" "}
                     <span className="money-counting">3 000 000 ₽</span> ★
                   </span>
                 ))}
@@ -2163,7 +2163,7 @@ loader.load(
               ],
               [
                 "Какие ограничения по возрасту?",
-                "От 18 до 60 лет.",
+                "От 18 до 63 лет.",
               ],
               [
                 "Сколько занимает оформление?",
