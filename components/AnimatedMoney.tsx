@@ -79,16 +79,16 @@ export function AnimatedMoney({
   }, [duration, inView, mv, value]);
 
   if (value == null) {
-    return <span className={`gold-money ${className}`}>{text}</span>;
+    return (
+      <span className={`money-counting text-lg ${className}`}>{text}</span>
+    );
   }
 
   const showAnimated = inView || !startWhenVisible;
-  const amountClass = countDone
-    ? "gold-money-shimmer"
-    : "gold-money";
+  const amountClass = countDone ? "gold-money-shimmer" : "money-counting";
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={`text-lg ${className}`}>
       {prefix ? <span className="text-white/60 font-medium">{prefix} </span> : null}
       <motion.span className={amountClass}>
         {showAnimated ? formatted : formatRuble(0)}

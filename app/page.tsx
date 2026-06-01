@@ -13,6 +13,7 @@ import { LeaderboardBar } from "@/components/LeaderboardBar";
 import { PhoneLink } from "@/components/PhoneLink";
 import { Modal } from "@/components/Modal";
 import { PersonalDataContent } from "@/components/PersonalDataContent";
+import { SectionHeading } from "@/components/SectionHeading";
 
 type FragmentData = {
   mesh: THREE.Mesh;
@@ -1783,20 +1784,18 @@ loader.load(
               x: 0,
             }}
           >
-            <div className="mb-4 text-sm tracking-[6px] text-white/50 font-semibold">
-              СЛУЖУ РОССИИ · CONTRACT RF
-            </div>
-
             <h1 className="relative text-3xl leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 break-words">
-              <img
-                src="/textures/lenta.png"
-                alt=""
-                aria-hidden
-                className="ribbon-corner ribbon-corner--tl"
-                draggable={false}
-              />
               <span className="text-gradient-tricolor">
-                Контрактная
+                <span className="ribbon-first-letter">
+                  <span className="ribbon-first-letter__char">К</span>
+                  <img
+                    src="/textures/lenta.png"
+                    alt=""
+                    className="ribbon-first-letter__img"
+                    draggable={false}
+                  />
+                </span>
+                онтрактная
                 <br />
                 <span className="inline-flex items-center gap-3 sm:gap-4 flex-wrap">
                   служба РФ
@@ -1815,7 +1814,7 @@ loader.load(
                 {Array.from({ length: 2 }).map((_, i) => (
                   <span key={i} className="patriotic-ticker__item">
                     ★ 18–60 лет • Контракт от 6 месяцев • Выплаты до{" "}
-                    <span className="gold-money">3 000 000 ₽</span> ★
+                    <span className="money-counting">3 000 000 ₽</span> ★
                   </span>
                 ))}
               </div>
@@ -1825,26 +1824,6 @@ loader.load(
               Полное сопровождение от подачи заявления до первых выплат.
               Служи с честью.
             </p>
-
-            <div className="mb-8 flex flex-wrap gap-2 sm:gap-3 max-w-xl">
-              {[
-                "Служи Отечеству с честью",
-                "Стань частью великой истории России",
-                "Защита Родины — высшая честь",
-                "Традиции мужества и героизма",
-                "Служу России!",
-                "Защитим Родину вместе",
-                "Честь. Долг. Отечество.",
-                "Стань щитом Отечества",
-              ].map((slogan) => (
-                <span
-                  key={slogan}
-                  className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-white/80 tracking-wide"
-                >
-                  {slogan}
-                </span>
-              ))}
-            </div>
 
             <div
               className="flex gap-4 flex-wrap pointer-events-auto"
@@ -1944,6 +1923,9 @@ loader.load(
             </div>
           </motion.div>
         </div>
+        <p className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide pointer-events-none">
+          Служи Отечеству с честью
+        </p>
       </section>
 
       {/* CONDITIONS */}
@@ -1954,9 +1936,7 @@ loader.load(
       >
         <div className="max-w-6xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">
-              Условия службы
-            </h2>
+            <SectionHeading title="Условия службы" />
           </Reveal>
 
           <Stagger className="grid md:grid-cols-2 gap-6 text-white/60">
@@ -2007,6 +1987,9 @@ loader.load(
               )
             )}
           </Stagger>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Традиции мужества и героизма
+          </p>
         </div>
       </section>
 
@@ -2014,12 +1997,7 @@ loader.load(
       <section id="payments" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
         <div className="max-w-7xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-3 break-words">
-              Выплаты
-            </h2>
-            <p className="text-white/60 text-lg mb-8 sm:mb-10 max-w-3xl">
-              Достойное вознаграждение защитникам Отечества
-            </p>
+            <SectionHeading title="Выплаты" />
           </Reveal>
           <Stagger className="grid md:grid-cols-2 gap-6">
             {[
@@ -2045,6 +2023,9 @@ loader.load(
               </Reveal>
             ))}
           </Stagger>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Достойное вознаграждение защитникам Отечества
+          </p>
         </div>
       </section>
 
@@ -2052,12 +2033,7 @@ loader.load(
       <section id="jobs" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
         <div className="max-w-7xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-3 break-words">
-              Должности
-            </h2>
-            <p className="text-white/60 text-lg mb-8 sm:mb-10 max-w-3xl">
-              Боевые специальности
-            </p>
+            <SectionHeading title="Должности" />
           </Reveal>
           <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -2083,6 +2059,9 @@ loader.load(
               </Reveal>
             ))}
           </Stagger>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Боевые специальности — служба с честью
+          </p>
         </div>
       </section>
 
@@ -2090,22 +2069,10 @@ loader.load(
       <section id="regions" className="relative scroll-mt-24 px-4 sm:px-6 py-20 sm:py-24 border-t border-white/10 pointer-events-none mil-divider">
         <div className="max-w-6xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="ribbon-underline text-2xl sm:text-3xl md:text-4xl font-bold mb-3 break-words">
-              Регионы
-            </h2>
-            <p className="text-white/60 text-lg mb-8 sm:mb-10 max-w-3xl">
-              Направления службы
-            </p>
+            <SectionHeading title="Регионы" />
           </Reveal>
 
           <Reveal className={glass + " p-4 sm:p-6 md:p-8 relative"}>
-            <img
-              src="/textures/lenta.png"
-              alt=""
-              aria-hidden
-              className="ribbon-corner ribbon-corner--br"
-              draggable={false}
-            />
             <Stagger className="space-y-3">
               {[
                 ["Москва", "от 270 000 ₽", 100],
@@ -2150,6 +2117,9 @@ loader.load(
               ))}
             </Stagger>
           </Reveal>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Направления службы по всей стране
+          </p>
         </div>
       </section>
       
@@ -2160,9 +2130,7 @@ loader.load(
       >
         <div className="max-w-7xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">
-              Какие документы понадобятся
-            </h2>
+            <SectionHeading title="Какие документы понадобятся" />
           </Reveal>
 
           <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
@@ -2179,6 +2147,9 @@ loader.load(
               </Reveal>
             ))}
           </Stagger>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Честь. Долг. Отечество.
+          </p>
         </div>
       </section>
 {/* FAQ */}
@@ -2189,9 +2160,7 @@ loader.load(
       >
         <div className="max-w-5xl mx-auto min-w-0">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-10 break-words">
-              Вопросы
-            </h2>
+            <SectionHeading title="Вопросы" />
           </Reveal>
 
           <div
@@ -2289,6 +2258,9 @@ loader.load(
               );
             })}
           </div>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Служу России!
+          </p>
         </div>
       </section>
       
@@ -2310,11 +2282,11 @@ loader.load(
             />
           </div>
 
-          <h2 className="ribbon-underline text-3xl sm:text-4xl md:text-5xl font-black mb-6 break-words inline-block">
-            Связаться
-          </h2>
+          <div className="mb-6 flex justify-center text-center">
+            <SectionHeading title="Связаться" className="[&_.ribbon-first-letter]:mx-auto" />
+          </div>
           <p className="text-white/60 mb-8 text-sm sm:text-base break-words px-1">
-            Защитим Родину вместе. Telegram для консультации и подачи анкеты.
+            Telegram для консультации и подачи анкеты
           </p>
           <div className="flex flex-col items-center gap-4 pointer-events-auto">
             <PhoneLink
@@ -2331,6 +2303,9 @@ loader.load(
               Написать в Telegram
             </a>
           </div>
+          <p className="mt-10 text-center text-white/50 text-base sm:text-lg italic tracking-wide">
+            Защитим Родину вместе
+          </p>
         </div>
       </section>
 
