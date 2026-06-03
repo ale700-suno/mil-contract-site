@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import Script from "next/script";
+import YandexMetrika from "@/components/YandexMetrika"; // ← Добавили импорт
 import "./globals.css";
 
 const siteUrl = "https://mil-contract-rf.vercel.app";
@@ -83,7 +84,7 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
 
-        {/* Yandex Metrika */}
+        {/* Yandex Metrika — основной скрипт */}
         <Script
           id="yandex-metrika"
           strategy="afterInteractive"
@@ -97,19 +98,23 @@ export default function RootLayout({
                 }
                 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
               })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109612757', 'ym');
+
               ym(109612757, 'init', {
-                ssr:true,
-                webvisor:true,
-                clickmap:true,
-                ecommerce:"dataLayer",
-                accurateTrackBounce:true,
-                trackLinks:true
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true,
+                ecommerce: "dataLayer",
+                ssr: true,
+                defer: true
               });
             `,
           }}
         />
       </head>
+
       <body className="min-h-screen bg-black text-white antialiased overflow-x-hidden select-none">
+        <YandexMetrika />   {/* ← Добавили компонент для отслеживания переходов */}
         {children}
       </body>
     </html>
