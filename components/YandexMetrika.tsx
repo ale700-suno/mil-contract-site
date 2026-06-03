@@ -1,33 +1,16 @@
-'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109612757', 'ym');
 
-// Типизация Яндекс Метрики
-declare global {
-  interface Window {
-    ym: (id: number, method: string, ...args: any[]) => void;
-  }
-}
+    ym(109612757, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109612757" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
-export default function YandexMetrika() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  useEffect(() => {
-    // Дополнительная защита от ошибок во время prerender
-    if (typeof window === 'undefined' || typeof window.ym !== 'function') {
-      return;
-    }
-
-    try {
-      const url = `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
-      window.ym(109612757, 'hit', url);
-    } catch (error) {
-      // Тихо игнорируем ошибки (чтобы не ломать билд)
-      console.error('Yandex Metrika error:', error);
-    }
-  }, [pathname, searchParams]);
-
-  return null;
-}
