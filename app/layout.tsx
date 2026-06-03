@@ -83,7 +83,7 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
 
-        {/* Yandex.Metrika */}
+        {/* Yandex.Metrika counter */}
         <Script
           id="yandex-metrika"
           strategy="afterInteractive"
@@ -97,14 +97,13 @@ export default function RootLayout({
                 }
                 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
               })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109612757', 'ym');
-              
               ym(109612757, 'init', {
-                ssr: true,
-                webvisor: true,
-                clickmap: true,
-                ecommerce: "dataLayer",
-                accurateTrackBounce: true,
-                trackLinks: true
+                ssr:true,
+                webvisor:true,
+                clickmap:true,
+                ecommerce:"dataLayer",
+                accurateTrackBounce:true,
+                trackLinks:true
               });
             `,
           }}
@@ -114,7 +113,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-black text-white antialiased overflow-x-hidden select-none">
         {children}
 
-        {/* Noscript часть (для пользователей без JS) */}
+        {/* Noscript fallback */}
         <noscript>
           <div>
             <img 
