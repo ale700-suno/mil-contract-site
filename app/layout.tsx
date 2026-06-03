@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import Script from "next/script";
-import YandexMetrika from "@/components/YandexMetrika"; // ← Добавили импорт
+import YandexMetrika from "@/components/YandexMetrika";
 import "./globals.css";
 
 const siteUrl = "https://mil-contract-rf.vercel.app";
@@ -84,7 +84,7 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
 
-        {/* Yandex Metrika — основной скрипт */}
+        {/* Yandex Metrika */}
         <Script
           id="yandex-metrika"
           strategy="afterInteractive"
@@ -114,7 +114,7 @@ export default function RootLayout({
       </head>
 
       <body className="min-h-screen bg-black text-white antialiased overflow-x-hidden select-none">
-        <YandexMetrika />   {/* ← Добавили компонент для отслеживания переходов */}
+        <YandexMetrika />
         {children}
       </body>
     </html>
